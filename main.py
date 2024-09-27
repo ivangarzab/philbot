@@ -32,16 +32,16 @@ async def on_message(message):
 
     print(f'Got a new message=\'{message.content}\'\n\tguild={message.guild}\n\tauthor={message.author.name}')
 
-    jeremyShouts = [f"I think Jeremy is cool", f"Listen to your professors!"]
     phillGreetings = [f'Hi, {author}!', f'How\'s it going?']
+    jeremyShouts = [f"I think Jeremy is cool", f"Listen to your professors!"]
 
     # The message to be sent out to the message.channel
     messageToSend = ""
 
     if 'Hi Phill' in msgFormat:
-      messageToSend = phillGreetings[1]
+      messageToSend = random.choice(phillGreetings)
     if 'Jeremy' in msgFormat:
-      messageToSend = jeremyShouts[random.randint(0, 1)]
+      messageToSend = random.choice(jeremyShouts)
 
     if 'together' in message.content:
       messageToSend = f'Philosophy is done best in community.\n\t\t-Jeremy Reid'
