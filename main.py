@@ -35,17 +35,20 @@ async def on_message(message):
     jeremyShouts = [f"I think Jeremy is cool", f"Listen to your professors!"]
     phillGreetings = [f'Hi, {author}!', f'How\'s it going?']
 
+    # The message to be sent out to the message.channel
+    messageToSend = ""
+
     if 'Hi Phill' in msgFormat:
-      await message.channel.send(phillGreetings[random.randInt(0, 1)])
+      messageToSend = phillGreetings[random.randInt(0, 1)]
     if 'Jeremy' in msgFormat:
-      await message.channel.send(jeremyShouts[random.randInt(0, 1)])
+      messageToSend = jeremyShouts[random.randInt(0, 1)]
 
     if 'together' in message.content:
-      await message.channel.send(f'Philosophy is done best in community.\n\t\t-Jeremy Reid')
+      messageToSend = f'Philosophy is done best in community.\n\t\t- Jeremy Reid'
     if 'someone wants' in msgFormat:
-      await message.channel.send(f'Philosophy is done best in community.\n\t\t-Jeremy Reid')
+      messageToSend = f'Philosophy is done best in community.\n\t\t- Jeremy Reid'
     if 'who wants' in msgFormat:
-      await message.channel.send(f'Philosophy is done best in community.\n\t\t-Jeremy Reid')
+      messageToSend = f'Philosophy is done best in community.\n\t\t- Jeremy Reid'
     
     ########--------- REFERENCES ---------########
     # if '<' == message.content:
@@ -74,6 +77,8 @@ async def on_message(message):
     #   await message.channel.send(f"la tuya {author}")
     # if 'shit' in msgFormat:
     #   await message.channel.send(f"A que hora pasas por el pan {author}")
+
+    await message.channel.send(messageToSend)
 
 # @client.event
 # async def on_message_delete(message):
