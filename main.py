@@ -1,6 +1,6 @@
 import discord
 import random
-import env
+import os
 import time
 
 DEFAULT_CHANNEL = 1288337522027401256
@@ -76,4 +76,4 @@ async def on_member_join(member):
         return
     await channel.send(f"Welcome to PHIL 715, {member}!")
 
-client.run(env.TOKEN)
+client.run(os.environ.get(TOKEN))
