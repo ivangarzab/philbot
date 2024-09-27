@@ -38,9 +38,9 @@ async def on_message(message):
     # The message to be sent out to the message.channel
     messageToSend = ""
 
-    if 'Hi Phill' in msgFormat:
+    if 'hi phill' in msgFormat:
       messageToSend = random.choice(phillGreetings)
-    if 'Jeremy' in msgFormat:
+    if 'jeremy' in msgFormat:
       messageToSend = random.choice(jeremyShouts)
 
     if 'together' in message.content:
