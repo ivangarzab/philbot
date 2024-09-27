@@ -11,7 +11,7 @@ if not TOKEN:
     raise ValueError("TOKEN environment variable is not set.")
 print(f'-->>>>>>>>>>>>>Got Discord TOKEN={TOKEN}<<<<<<<<<<<<<--')
 
-intents = discord.Intents.default()
+intents = discord.Intents.all()
 
 client = discord.Client(intents=intents)
 
@@ -19,7 +19,7 @@ greetings = ["Hi!", "suuup", "buenas"]
 
 @client.event
 async def on_ready():
-    print(f'We have logged in as {client.user}')
+    print(f'We have logged in as {client.user.name}')
 
 @client.event
 async def on_message(message):
