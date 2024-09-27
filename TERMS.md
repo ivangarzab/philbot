@@ -1,7 +1,7 @@
 ## **Terms of Use for Phill the Philosophy Bot**
 
 **1. Introduction**
-Phill the Philosophy Bot (the "Bot") is a Discord bot designed to entertain and offer insignifcant insight in  students servers of SFSU's philosophy courses . By using the Bot, you agree to these Terms of Use ("Terms").
+Phill the Philosophy Bot (the "Bot") is a Discord bot designed to entertain and offer insignifcant insight in  students servers of SFSU's philosophy courses. By using the Bot, you agree to these Terms of Use ("Terms").
 
 **2. Use of the Bot**
 2.1 You agree to use the Bot in accordance with these Terms and all applicable laws and regulations.
