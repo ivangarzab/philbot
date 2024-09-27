@@ -9,6 +9,7 @@ TOKEN = os.getenv("TOKEN")
 
 if not TOKEN:
     raise ValueError("TOKEN environment variable is not set.")
+print({TOKEN})
 
 intents = discord.Intents.default()
 
@@ -81,4 +82,4 @@ async def on_member_join(member):
         return
     await channel.send(f"Welcome to PHIL 715, {member}!")
 
-client.run(os.environ.get({TOKEN}))
+client.run(TOKEN)
