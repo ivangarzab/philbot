@@ -33,7 +33,7 @@ async def on_message(message):
       await message.channel.send("Philosophy is done best in community. -Jeremy Reid")
     if 'someone wants' in message.content:
       await message.channel.send("Philosophy is done best in community. -Jeremy Reid")
-      if 'who wants' in message.content:
+    if 'who wants' in message.content:
       await message.channel.send("Philosophy is done best in community. -Jeremy Reid")
     
     ########--------- REFERENCES ---------########
