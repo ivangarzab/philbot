@@ -78,7 +78,7 @@ async def on_message(message):
     # if 'shit' in msgFormat:
     #   await message.channel.send(f"A que hora pasas por el pan {author}")
 
-    if messageToSend
+    if messageToSend:
       await message.channel.send(messageToSend)
 
 # @client.event
