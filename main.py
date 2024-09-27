@@ -30,8 +30,7 @@ async def on_message(message):
     msgFormat = message.content.lower()
     allowed_mentions = discord.AllowedMentions(everyone = True)
 
-    print(f'MESSAGE={message}')
-    print(f'Got a new message=\'{message.content}\' from={author.name}')
+    print(f'Got a new message=\'{message.content}\' from={message.author.name}')
 
     jeremyShouts = [f"I think Jeremy is cool", f"Listen to your professors!"]
     phillGreetings = [f'Hi, {author}!', f'How\'s it going?']
