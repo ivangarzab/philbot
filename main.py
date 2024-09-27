@@ -5,7 +5,7 @@ import time
 
 DEFAULT_CHANNEL = 1288337522027401256
 # Get the TOKEN from the environment variable
-TOKEN: String = os.getenv("TOKEN")
+TOKEN = os.getenv("TOKEN")
 
 if not TOKEN:
     raise ValueError("TOKEN environment variable is not set.")
@@ -81,4 +81,4 @@ async def on_member_join(member):
         return
     await channel.send(f"Welcome to PHIL 715, {member}!")
 
-client.run(os.environ.get(TOKEN))
+client.run(os.environ.get({TOKEN}))
