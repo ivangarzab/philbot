@@ -39,7 +39,7 @@ async def on_message(message):
     messageToSend = ""
 
     if 'Hi Phill' in msgFormat:
-      messageToSend = phillGreetings[random.randint(0, 1)]
+      messageToSend = phillGreetings[1]
     if 'Jeremy' in msgFormat:
       messageToSend = jeremyShouts[random.randint(0, 1)]
 
@@ -52,7 +52,7 @@ async def on_message(message):
 
     # Only send messageToSend if the string is not empty
     if messageToSend:
-      print("Sending message: {messageToSend}")
+      print(f"Sending message: {messageToSend}")
       await message.channel.send(messageToSend)
 
 # @client.event
