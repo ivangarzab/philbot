@@ -4,6 +4,11 @@ import os
 import time
 
 DEFAULT_CHANNEL = 1288337522027401256
+# Get the TOKEN from the environment variable
+TOKEN = os.getenv("TOKEN")
+
+if not TOKEN:
+    raise ValueError("TOKEN environment variable is not set.")
 
 intents = discord.Intents.default()
 
