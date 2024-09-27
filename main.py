@@ -19,7 +19,7 @@ greetings = ["Hi!", "suuup", "buenas"]
 
 @client.event
 async def on_ready():
-    print(f'We have logged in as {client.user.name}')
+    print(f'We have logged in as {client.user}')
 
 @client.event
 async def on_message(message):
@@ -31,7 +31,7 @@ async def on_message(message):
     allowed_mentions = discord.AllowedMentions(everyone = True)
 
     print(f'MESSAGE={message}')
-    print(f'Got a new message=\'{message.content}\' from={author}')
+    print(f'Got a new message=\'{message.content}\' from={author.name}')
 
     jeremyShouts = [f"I think Jeremy is cool", f"Listen to your professors!"]
     phillGreetings = [f'Hi, {author}!', f'How\'s it going?']
