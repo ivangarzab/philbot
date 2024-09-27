@@ -9,7 +9,7 @@ TOKEN = os.getenv("TOKEN")
 
 if not TOKEN:
     raise ValueError("TOKEN environment variable is not set.")
-print(f'Got Discord TOKEN={TOKEN}')
+print(f'-->>>>>>>>>>>>>Got Discord TOKEN={TOKEN}<<<<<<<<<<<<<--')
 
 intents = discord.Intents.default()
 
@@ -31,7 +31,10 @@ async def on_message(message):
     allowed_mentions = discord.AllowedMentions(everyone = True)
 
     jeremyShouts = [f"I think Jeremy is cool", f"Listen to your professors!"]
+    phillGreetings = [f'Hi, {author}!', f'How\'s it going {author}?']
 
+    if 'Hi Phill' in message.content:
+      await message.channel.send(phillGreetings[random.randInt(0, 1)])
     if 'Jeremy' in message.content:
       await message.channel.send(jeremyShouts[random.randInt(0, 1)])
 
