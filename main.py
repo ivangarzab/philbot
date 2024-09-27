@@ -30,7 +30,7 @@ async def on_message(message):
     msgFormat = message.content.lower()
     allowed_mentions = discord.AllowedMentions(everyone = True)
 
-    # print(f'Got a new message {message.content} from {author}')
+    print(f'Got a new message {message.content} from {author}')
 
     jeremyShouts = [f"I think Jeremy is cool", f"Listen to your professors!"]
     phillGreetings = [f'Hi, {author}!', f'How\'s it going?']
@@ -41,11 +41,11 @@ async def on_message(message):
       await message.channel.send(jeremyShouts[random.randInt(0, 1)])
 
     if 'together' in msgFormat:
-      await message.channel.send("Philosophy is done best in community. -Jeremy Reid")
+      await message.channel.send(f'Philosophy is done best in community. -Jeremy Reid')
     if 'someone wants' in msgFormat:
-      await message.channel.send("Philosophy is done best in community. -Jeremy Reid")
+      await message.channel.send(f'Philosophy is done best in community. -Jeremy Reid')
     if 'who wants' in msgFormat:
-      await message.channel.send("Philosophy is done best in community. -Jeremy Reid")
+      await message.channel.send(f'Philosophy is done best in community. -Jeremy Reid')
     
     ########--------- REFERENCES ---------########
     # if '<' == message.content:
