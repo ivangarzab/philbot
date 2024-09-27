@@ -39,9 +39,9 @@ async def on_message(message):
     messageToSend = ""
 
     if 'Hi Phill' in msgFormat:
-      messageToSend = phillGreetings[random.randInt(0, 1)]
+      messageToSend = phillGreetings[random.randint(0, 1)]
     if 'Jeremy' in msgFormat:
-      messageToSend = jeremyShouts[random.randInt(0, 1)]
+      messageToSend = jeremyShouts[random.randint(0, 1)]
 
     if 'together' in message.content:
       messageToSend = f'Philosophy is done best in community.\n\t\t-Jeremy Reid'
