@@ -40,7 +40,7 @@ async def on_message(message):
     if 'Jeremy' in msgFormat:
       await message.channel.send(jeremyShouts[random.randInt(0, 1)])
 
-    if 'together' in msgFormat:
+    if 'together' in message.content:
       await message.channel.send(f'Philosophy is done best in community. -Jeremy Reid')
     if 'someone wants' in msgFormat:
       await message.channel.send(f'Philosophy is done best in community. -Jeremy Reid')
