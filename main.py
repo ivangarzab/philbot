@@ -9,7 +9,7 @@ TOKEN = os.getenv("TOKEN")
 
 if not TOKEN:
     raise ValueError("TOKEN environment variable is not set.")
-print({TOKEN})
+print(f'Got Discord TOKEN={TOKEN}')
 
 intents = discord.Intents.default()
 
