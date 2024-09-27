@@ -11,7 +11,7 @@ if not TOKEN:
     raise ValueError("TOKEN environment variable is not set.")
 print(f'-->>>>>>>>>>>>>Got Discord TOKEN={TOKEN}<<<<<<<<<<<<<--')
 
-intents = discord.Intents.default()
+intents = discord.Intents.all()
 
 client = discord.Client(intents=intents)
 
