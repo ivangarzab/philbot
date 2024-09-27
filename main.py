@@ -51,10 +51,9 @@ async def on_message(message):
       messageToSend = f'Philosophy is done best in community.\n\t\t-Jeremy Reid'
 
     # Only send messageToSend if the string is not empty
-    if (messageToSend) {
+    if messageToSend:
       print("Sending message: {messageToSend}")
       await message.channel.send(messageToSend)
-    }
 
 # @client.event
 # async def on_message_delete(message):
