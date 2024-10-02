@@ -1,4 +1,5 @@
 import discord
+from discord.ext import commands
 import random
 import os
 import time
@@ -89,5 +90,15 @@ async def on_member_join(member):
     if not channel:
         return
     await channel.send(f"Welcome to PHIL 715, {member}!")
+
+@bot.command()
+async def roll_dice(ctx: commands.Context):
+    result = random.randint(1, 6)
+    await ctx.send(f"You rolled a {result}!")
+
+@bot.command()
+async def flip_coin(ctx: commands.Context):
+    result = random.choice(["Heads", "Tails"])
+    await ctx.send(f"You flipped a coin and got {result}!")
 
 client.run(TOKEN)
