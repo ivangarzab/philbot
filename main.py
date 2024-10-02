@@ -40,7 +40,7 @@ async def on_message(message):
 
     if 'phill' in msgFormat:
       messageToSend = random.choice(phillGreetings)
-    if bot.user in message.mentions:
+    if client.user in message.mentions:
       messageToSend = random.choice(phillGreetings)
 
     # Jeremy responses, and his quotes
