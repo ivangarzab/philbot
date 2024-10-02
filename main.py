@@ -99,7 +99,7 @@ async def send_reminder_message():
       if channel:
         await channel.send("Have fun in class!")
   # Check if it's Monday for the homework reminder
-  elif: now.weekday() == calendar.MONDAY:
+  elif now.weekday() == calendar.MONDAY:
     if now.hour == 20: # Check if current hour matches target hour
       channel = client.get_channel(DEFAULT_CHANNEL)
       if channel:
