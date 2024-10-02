@@ -4,6 +4,7 @@ import discord
 from discord.ext import commands
 from discord.ext import tasks
 from datetime import datetime, timedelta
+import pytz
 import calendar
 
 DEFAULT_CHANNEL = 1288337522027401256
@@ -92,21 +93,25 @@ async def on_member_join(member):
 # Define the async task running every hour that will send reminder messages
 @tasks.loop(hours=1)
 async def send_reminder_message():
+  # Define the SF timezone (Pacific Standard Time)
+  sf_timezone = pytz.timezone('US/Pacific')
   now = datetime.utcnow()
+  # Convert UTC time to LA time
+  now_pacific = now_utc.astimezone(sf_timezone)
   # Check if it's Tuesday for the wishing good luck in class
-  if now.weekday() == calendar.TUESDAY:
-    if now.hour == 15: # Check if current hour matches target hour
+  if now_pacific.weekday() == calendar.TUESDAY:
+    if now_pacific.hour == 15: # Check if current hour matches target hour
       channel = client.get_channel(DEFAULT_CHANNEL)
       if channel:
         await channel.send("Have fun in class!")
   # Check if it's Monday for the homework reminder
-  elif now.weekday() == calendar.MONDAY:
-    if now.hour == 20: # Check if current hour matches target hour
+  elif now_pacific.weekday() == calendar.MONDAY:
+    if now_pacific.hour == 20: # Check if current hour matches target hour
       channel = client.get_channel(DEFAULT_CHANNEL)
       if channel:
         await channel.send("Don't forget to submit in your homework tonight!")
   else:
-    print(f"Ran send_reminder_message() at {now}, but there's nothing to shout.")
+    print(f"Ran send_reminder_message() at {now_pacific}, but there's nothing to shout.")
 
 ############################# CUSTOM COMMANDS #############################
 @client.command()
