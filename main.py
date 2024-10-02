@@ -16,7 +16,7 @@ intents = discord.Intents.all()
 
 client = discord.Client(intents=intents)
 
-greetings = ["Hi!", "suuup", "buenas"]
+# bot = commands.Bot(command_prefix='!')
 
 @client.event
 async def on_ready():
@@ -91,14 +91,14 @@ async def on_member_join(member):
         return
     await channel.send(f"Welcome to PHIL 715, {member}!")
 
-@bot.command()
-async def roll_dice(ctx: commands.Context):
-    result = random.randint(1, 6)
-    await ctx.send(f"You rolled a {result}!")
+# @bot.command()
+# async def roll_dice(ctx: commands.Context):
+#     result = random.randint(1, 6)
+#     await ctx.send(f"You rolled a {result}!")
 
-@bot.command()
-async def flip_coin(ctx: commands.Context):
-    result = random.choice(["Heads", "Tails"])
-    await ctx.send(f"You flipped a coin and got {result}!")
+# @bot.command()
+# async def flip_coin(ctx: commands.Context):
+#     result = random.choice(["Heads", "Tails"])
+#     await ctx.send(f"You flipped a coin and got {result}!")
 
 client.run(TOKEN)
