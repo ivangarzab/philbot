@@ -89,7 +89,7 @@ async def on_member_join(member):
 
 ############################# REMINDER MESSAGES #############################
 # Define the async task that will send messages for 
-@tasks.loop(weeks=1)  # Runs every week 
+@tasks.loop(minutes=60*24*7) # Runs every week 
 async def send_reminder_message():
   now = datetime.utcnow()
   # Check if it's Tuesday for the wishing good luck in class
