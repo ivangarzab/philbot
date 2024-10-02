@@ -91,12 +91,14 @@ async def on_member_join(member):
     await channel.send(f"Welcome to PHIL 715, {member}!")
 
 @client.command()
-async def rollDice(ctx: commands.Context):
+async def rolldice(ctx: commands.Context):
+    print(f"Got a rolldice command")
     result = random.randint(1, 6)
     await ctx.send(f"You rolled a {result}!")
 
 @client.command()
-async def flipCoin(ctx: commands.Context):
+async def flipcoin(ctx: commands.Context):
+    print(f"Got a flipcoin command")
     result = random.choice(["Heads", "Tails"])
     await ctx.send(f"You flipped a coin and got {result}!")
 
