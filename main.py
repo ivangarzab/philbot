@@ -4,7 +4,7 @@ import discord
 from discord.ext import commands
 from discord.ext import tasks
 from datetime import datetime, timedelta
-import asyncio
+import calendar
 
 DEFAULT_CHANNEL = 1288337522027401256
 # Get the TOKEN from the environment variable
