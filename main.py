@@ -32,7 +32,7 @@ async def on_message(message):
 
     print(f'Got a new message=\'{message.content}\'\n\tguild={message.guild}\n\tauthor={message.author.name}')
 
-    phillGreetings = [f'Hi, {author}!', f'How\'s it going?']
+    phillGreetings = [f'Hi, {author}!', f'How\'s it going?', '👋']
     jeremyShouts = [f"I think Jeremy is cool", f"Listen to your professors!"]
 
     # The message to be sent out to the message.channel
@@ -40,9 +40,15 @@ async def on_message(message):
 
     if 'hi phill' in msgFormat:
       messageToSend = random.choice(phillGreetings)
+    if 'hey phill' in msgFormat:
+      messageToSend = random.choice(phillGreetings)
+    if 'phill' in msgFormat:
+      messageToSend = random.choice(phillGreetings)
+
+    # Jeremy responses, and his quotes
     if 'jeremy' in msgFormat:
       messageToSend = random.choice(jeremyShouts)
-
+    ### Philosophy is done best in community
     if 'together' in message.content:
       messageToSend = f'Philosophy is done best in community.\n\t\t-Jeremy Reid'
     if 'someone wants' in msgFormat:
@@ -51,11 +57,21 @@ async def on_message(message):
       messageToSend = f'Philosophy is done best in community.\n\t\t-Jeremy Reid'
     if 'share' in msgFormat:
       messageToSend = f'Philosophy is done best in community.\n\t\t-Jeremy Reid'
-
+    
+    # Papers
     if 'final paper' in msgFormat:
       messageToSend = f'Good papers grow themselves.'
     if 'papers' in msgFormat:
       messageToSend = f'Good papers grow themselves.'
+
+    # Socrates
+    if 'examine' in msgFormat:
+      messageToSend = f'The unexamined life is not worth living.\n\t\tSocrates'
+    if 'know' in msgFormat:
+      messageToSend = f'All I know is that I know nothing.\n\t\tSocrates'
+    # Descartes
+    if 'i think' in msgFormat:
+      messageToSend = f'I think, therefore I am.\n\t\Descartes'
 
     # Only send messageToSend if the string is not empty
     if messageToSend:
