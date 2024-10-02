@@ -4,6 +4,7 @@ import discord
 from discord.ext import commands
 from discord.ext import tasks
 from datetime import datetime, timedelta
+import asyncio
 
 DEFAULT_CHANNEL = 1288337522027401256
 # Get the TOKEN from the environment variable
@@ -14,8 +15,10 @@ if not TOKEN:
 print(f'~~~~~~Got Discord TOKEN={TOKEN}~~~~~~')
 
 intents = discord.Intents.all()
-
 client = commands.Bot(command_prefix='!', intents=intents)
+
+# Get the event loop (if available)
+loop = asyncio.get_event_loop()
 
 @client.event
 async def on_ready():
@@ -125,7 +128,12 @@ async def flipcoin(ctx: commands.Context):
 async def before_loop():
   await client.wait_until_ready()
 
-send_reminder_message.start(before_loop)
+if loop and loop.is_running():  # Check if loop is running
+  # Start the task using the retrieved loop
+  send_tuesday_message.start(before_loop)
+else:
+  # Handle the case where no loop is running (e.g., not directly running the bot)
+  print("No event loop found. Please ensure the bot is running asynchronously.")
 
 # Run the bot with your bot token
 client.run(TOKEN)
