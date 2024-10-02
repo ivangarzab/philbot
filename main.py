@@ -1,7 +1,9 @@
+import os
+import random
 import discord
 from discord.ext import commands
-import random
-import os
+from discord.ext import tasks
+from datetime import datetime, timedelta
 
 DEFAULT_CHANNEL = 1288337522027401256
 # Get the TOKEN from the environment variable
@@ -13,7 +15,6 @@ print(f'~~~~~~Got Discord TOKEN={TOKEN}~~~~~~')
 
 intents = discord.Intents.all()
 
-# client = discord.Client(intents=intents)
 client = commands.Bot(command_prefix='!', intents=intents)
 
 @client.event
@@ -77,10 +78,6 @@ async def on_message(message):
 
     # This line is necessary to process commands within on_message()
     await client.process_commands(message) 
-
-# @client.event
-# async def on_message_delete(message):
-#     await message.channel.send(f"{message.author.mention}, why would you delete that message?")
     
 @client.event
 async def on_member_join(member):
@@ -90,6 +87,27 @@ async def on_member_join(member):
         return
     await channel.send(f"Welcome to PHIL 715, {member}!")
 
+############################# REMINDER MESSAGES #############################
+# Define the async task that will send messages for 
+@tasks.loop(weeks=1)  # Runs every week 
+async def send_reminder_message():
+  now = datetime.utcnow()
+  # Check if it's Tuesday for the wishing good luck in class
+  if now.weekday() == calendar.TUESDAY:
+    if now.hour == 15: # Check if current hour matches target hour
+      channel = client.get_channel(DEFAULT_CHANNEL)
+      if channel:
+        await channel.send("Have fun in class!")
+  # Check if it's Monday for the homework reminder
+  elif: now.weekday() == calendar.MONDAY:
+    if now.hour == 20: # Check if current hour matches target hour
+      channel = client.get_channel(DEFAULT_CHANNEL)
+      if channel:
+        await channel.send("Don't forget to submit in your homework tonight!")
+  else:
+    print(f"Ran send_reminder_message() at {now}, but there's nothing to shout.")
+
+############################# CUSTOM COMMANDS #############################
 @client.command()
 async def rolldice(ctx: commands.Context):
     print(f"Got a rolldice command")
@@ -101,6 +119,13 @@ async def flipcoin(ctx: commands.Context):
     print(f"Got a flipcoin command")
     result = random.choice(["HEADS", "TAILS"])
     await ctx.send(f"You flipped a coin and got {result}!")
+
+################################ EXEC INIT ################################
+# Start the task before the bot is ready
+async def before_loop():
+  await client.wait_until_ready()
+
+send_reminder_message.start(before_loop)
 
 # Run the bot with your bot token
 client.run(TOKEN)
