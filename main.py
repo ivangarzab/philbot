@@ -89,8 +89,8 @@ async def on_member_join(member):
     await channel.send(f"Welcome to PHIL 715, {member}!")
 
 ############################# REMINDER MESSAGES #############################
-# Define the async task that will send messages for 
-@tasks.loop(minutes=60*24*7) # Runs every week 
+# Define the async task running every hour that will send reminder messages
+@tasks.loop(hours=1)
 async def send_reminder_message():
   now = datetime.utcnow()
   # Check if it's Tuesday for the wishing good luck in class
