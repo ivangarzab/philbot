@@ -38,11 +38,9 @@ async def on_message(message):
     # The message to be sent out to the message.channel
     messageToSend = ""
 
-    if 'hi phill' in msgFormat:
-      messageToSend = random.choice(phillGreetings)
-    if 'hey phill' in msgFormat:
-      messageToSend = random.choice(phillGreetings)
     if 'phill' in msgFormat:
+      messageToSend = random.choice(phillGreetings)
+    if bot.user in message.mentions:
       messageToSend = random.choice(phillGreetings)
 
     # Jeremy responses, and his quotes
@@ -78,6 +76,7 @@ async def on_message(message):
       print(f"Sending message: {messageToSend}")
       await message.channel.send(messageToSend)
 
+    # This line is necessary to process commands within on_message()
     await client.process_commands(message) 
 
 # @client.event
