@@ -95,7 +95,7 @@ async def on_member_join(member):
 async def send_reminder_message():
   # Define the SF timezone (Pacific Standard Time)
   sf_timezone = pytz.timezone('US/Pacific')
-  now = datetime.utcnow()
+  now_utc = datetime.utcnow()
   # Convert UTC time to LA time
   now_pacific = now_utc.astimezone(sf_timezone)
   # Check if it's Tuesday for the wishing good luck in class
