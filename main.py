@@ -2,7 +2,6 @@ import discord
 from discord.ext import commands
 import random
 import os
-import time
 
 DEFAULT_CHANNEL = 1288337522027401256
 # Get the TOKEN from the environment variable
@@ -10,7 +9,7 @@ TOKEN = os.getenv("TOKEN")
 
 if not TOKEN:
     raise ValueError("TOKEN environment variable is not set.")
-print(f'-->>>>>>>>>>>>>Got Discord TOKEN={TOKEN}<<<<<<<<<<<<<--')
+print(f'~~~~~~Got Discord TOKEN={TOKEN}~~~~~~')
 
 intents = discord.Intents.all()
 
@@ -19,7 +18,7 @@ client = commands.Bot(command_prefix='!', intents=intents)
 
 @client.event
 async def on_ready():
-    print(f'We have logged in as {client.user}')
+    print(f'~~~~~~We have logged in as {client.user}~~~~~~')
 
 @client.event
 async def on_message(message):
