@@ -49,6 +49,13 @@ async def on_message(message):
       messageToSend = f'Philosophy is done best in community.\n\t\t-Jeremy Reid'
     if 'who wants' in msgFormat:
       messageToSend = f'Philosophy is done best in community.\n\t\t-Jeremy Reid'
+    if 'share' in msgFormat:
+      messageToSend = f'Philosophy is done best in community.\n\t\t-Jeremy Reid'
+
+    if 'final paper' in msgFormat:
+      messageToSend = f'Good papers grow themselves.'
+    if 'papers' in msgFormat:
+      messageToSend = f'Good papers grow themselves.'
 
     # Only send messageToSend if the string is not empty
     if messageToSend:
