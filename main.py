@@ -17,13 +17,10 @@ print(f'~~~~~~Got Discord TOKEN={TOKEN}~~~~~~')
 intents = discord.Intents.all()
 client = commands.Bot(command_prefix='!', intents=intents)
 
-# Get the event loop (if available)
-loop = asyncio.get_event_loop()
-
 @client.event
 async def on_ready():
     print(f'~~~~~~We have logged in as {client.user}~~~~~~')
-    send_tuesday_message.start()
+    send_reminder_message.start()
 
 @client.event
 async def on_message(message):
@@ -125,16 +122,4 @@ async def flipcoin(ctx: commands.Context):
     await ctx.send(f"You flipped a coin and got {result}!")
 
 ################################ EXEC INIT ################################
-# Start the task before the bot is ready
-async def before_loop():
-  await client.wait_until_ready()
-
-# if loop and loop.is_running():  # Check if loop is running
-#   # Start the task using the retrieved loop
-#   send_tuesday_message.start(before_loop)
-# else:
-#   # Handle the case where no loop is running (e.g., not directly running the bot)
-#   print("No event loop found. Please ensure the bot is running asynchronously.")
-
-# Run the bot with your bot token
-client.run(TOKEN)
+client.run(TOKEN) # Run the bot with your bot token
