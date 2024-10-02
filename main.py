@@ -21,18 +21,6 @@ client = commands.Bot(command_prefix='!', intents=intents)
 async def on_ready():
     print(f'We have logged in as {client.user}')
 
-@client.command()
-async def rolldice(ctx: commands.Context):
-    print(f"Got a rolldice command")
-    result = random.randint(1, 6)
-    await ctx.send(f"You rolled a {result}!")
-
-@client.command()
-async def flipcoin(ctx: commands.Context):
-    print(f"Got a flipcoin command")
-    result = random.choice(["Heads", "Tails"])
-    await ctx.send(f"You flipped a coin and got {result}!")
-
 @client.event
 async def on_message(message):
     if message.author == client.user:
@@ -90,6 +78,8 @@ async def on_message(message):
       print(f"Sending message: {messageToSend}")
       await message.channel.send(messageToSend)
 
+    await client.process_commands(message) 
+
 # @client.event
 # async def on_message_delete(message):
 #     await message.channel.send(f"{message.author.mention}, why would you delete that message?")
@@ -102,4 +92,17 @@ async def on_member_join(member):
         return
     await channel.send(f"Welcome to PHIL 715, {member}!")
 
+@client.command()
+async def rolldice(ctx: commands.Context):
+    print(f"Got a rolldice command")
+    result = random.randint(1, 6)
+    await ctx.send(f"You rolled a {result}!")
+
+@client.command()
+async def flipcoin(ctx: commands.Context):
+    print(f"Got a flipcoin command")
+    result = random.choice(["HEADS", "TAILS"])
+    await ctx.send(f"You flipped a coin and got {result}!")
+
+# Run the bot with your bot token
 client.run(TOKEN)
