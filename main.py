@@ -22,6 +22,7 @@ client = commands.Bot(command_prefix='!', intents=intents)
 async def on_ready():
     print(f'~~~~~~We have logged in as {client.user}~~~~~~')
     if not send_reminder_message.is_running():
+      print(f'~~~~~~Starting send_reminder_message() tasks~~~~~~')
       send_reminder_message.start()
 
 @client.event
@@ -94,6 +95,7 @@ async def on_member_join(member):
 # Define the async task running every hour that will send reminder messages
 @tasks.loop(hours=1)
 async def send_reminder_message():
+  print(f'~~~~~~Running send_reminder_message()~~~~~~')
   # Define the SF timezone (Pacific Standard Time)
   sf_timezone = pytz.timezone('US/Pacific')
   now_utc = datetime.utcnow()
