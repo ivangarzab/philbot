@@ -21,7 +21,8 @@ client = commands.Bot(command_prefix='!', intents=intents)
 @client.event
 async def on_ready():
     print(f'~~~~~~We have logged in as {client.user}~~~~~~')
-    send_reminder_message.start()
+    if not send_reminder_message.is_running():
+      send_reminder_message.start()
 
 @client.event
 async def on_message(message):
