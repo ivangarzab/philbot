@@ -103,8 +103,6 @@ async def send_reminder_message():
   now_utc = datetime.utcnow()
   # Convert UTC time to LA time
   now_pacific = now_utc.replace(tzinfo=pytz.utc).astimezone(sf_timezone)
-  # now_pacific = now_utc.astimezone(sf_timezone)
-
   # Check if it's Tuesday for the wishing good luck in class
   if now_pacific.weekday() == calendar.TUESDAY:
     if now_pacific.hour == 15: # Check if current hour matches target hour
