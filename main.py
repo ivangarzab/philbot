@@ -36,20 +36,25 @@ async def on_message(message):
 
     print(f'Got a new message=\'{message.content}\'\n\tguild={message.guild}\n\tauthor={message.author.name}')
 
-    phillGreetings = [f'Hi, {author}!', f'How\'s it going?', '👋']
+    phillGreetings = [f'I am Phill', '👀']
+    phillGreetReactions = [f'🙃', f'👽', f'🍄', f'🌙', f'🔥', f'⚡️']
     jeremyShouts = [f"I think Jeremy is cool", f"Listen to your professors!"]
 
     # The message to be sent out to the message.channel
     messageToSend = ""
 
-    if 'phill' in msgFormat:
-      messageToSend = random.choice(phillGreetings)
     if client.user in message.mentions:
-      messageToSend = random.choice(phillGreetings)
+      go = random.randint(1, 10)
+      if go < 4:
+        messageToSend = random.choice(phillGreetings)
+      elif go > 5:
+        await message.add_reaction(random.choice(phillGreetReactions))
 
     # Jeremy responses, and his quotes
     if 'jeremy' in msgFormat:
-      messageToSend = random.choice(jeremyShouts)
+      go = random.randint(1, 2)
+      if go == 1:
+        messageToSend = random.choice(jeremyShouts)
     ### Philosophy is done best in community
     if 'together' in message.content:
       messageToSend = f'Philosophy is done best in community.\n\t\t-Jeremy Reid'
@@ -58,22 +63,15 @@ async def on_message(message):
     if 'who wants' in msgFormat:
       messageToSend = f'Philosophy is done best in community.\n\t\t-Jeremy Reid'
     if 'share' in msgFormat:
-      messageToSend = f'Philosophy is done best in community.\n\t\t-Jeremy Reid'
+      go = random.randint(1, 2)
+      if go == 1:
+        messageToSend = f'Philosophy is done best in community.\n\t\t-Jeremy Reid'
     
     # Papers
     if 'final paper' in msgFormat:
       messageToSend = f'Good papers grow themselves.'
     if 'papers' in msgFormat:
       messageToSend = f'Good papers grow themselves.'
-
-    # Socrates
-    if 'examine' in msgFormat:
-      messageToSend = f'The unexamined life is not worth living.\n\t\tSocrates'
-    if 'know' in msgFormat:
-      messageToSend = f'All I know is that I know nothing.\n\t\tSocrates'
-    # Descartes
-    if 'i think' in msgFormat:
-      messageToSend = f'I think, therefore I am.\n\t\Descartes'
 
     # Only send messageToSend if the string is not empty
     if messageToSend:
