@@ -96,11 +96,15 @@ async def on_member_join(member):
 @tasks.loop(hours=1)
 async def send_reminder_message():
   print(f'~~~~~~Running send_reminder_message()~~~~~~')
+  # Create a timezone object for UTC
+  utc_timezone = pytz.timezone('UTC')
   # Define the SF timezone (Pacific Standard Time)
   sf_timezone = pytz.timezone('US/Pacific')
   now_utc = datetime.utcnow()
   # Convert UTC time to LA time
-  now_pacific = now_utc.astimezone(sf_timezone)
+  now_pacific = now_utc.replace(tzinfo=pytz.utc).astimezone(pacific_timezone)
+  # now_pacific = now_utc.astimezone(sf_timezone)
+
   # Check if it's Tuesday for the wishing good luck in class
   if now_pacific.weekday() == calendar.TUESDAY:
     if now_pacific.hour == 15: # Check if current hour matches target hour
