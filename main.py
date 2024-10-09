@@ -102,7 +102,7 @@ async def send_reminder_message():
   sf_timezone = pytz.timezone('US/Pacific')
   now_utc = datetime.utcnow()
   # Convert UTC time to LA time
-  now_pacific = now_utc.replace(tzinfo=pytz.utc).astimezone(pacific_timezone)
+  now_pacific = now_utc.replace(tzinfo=pytz.utc).astimezone(sf_timezone)
   # now_pacific = now_utc.astimezone(sf_timezone)
 
   # Check if it's Tuesday for the wishing good luck in class
