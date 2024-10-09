@@ -37,7 +37,7 @@ async def on_message(message):
     print(f'Got a new message=\'{message.content}\'\n\tguild={message.guild}\n\tauthor={message.author.name}')
 
     phillGreetings = [f'I am Phill', '👀']
-    phillGreetReactions = [f'🙃', f'👽', f'🍄', f'🌙', f'🔥', f'⚡️']
+    phillGreetReactions = [f'🙃', f'👽', f'🍄', f'🌙', f'🔥', f'🎗️']
     jeremyShouts = [f"I think Jeremy is cool", f"Listen to your professors!"]
 
     # The message to be sent out to the message.channel
@@ -49,7 +49,7 @@ async def on_message(message):
         messageToSend = random.choice(phillGreetings)
       elif go > 5:
         reaction = random.choice(phillGreetReactions)
-        print(f"Sending reaction: {reaction}")
+        print(f"Adding reaction to message: {reaction}")
         await message.add_reaction(reaction)
 
     # Jeremy responses, and his quotes
