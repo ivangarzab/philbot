@@ -48,7 +48,9 @@ async def on_message(message):
       if go < 4:
         messageToSend = random.choice(phillGreetings)
       elif go > 5:
-        await message.add_reaction(random.choice(phillGreetReactions))
+        reaction = random.choice(phillGreetReactions)
+        print(f"Sending reaction: {reaction}")
+        await message.add_reaction(reaction)
 
     # Jeremy responses, and his quotes
     if 'jeremy' in msgFormat:
