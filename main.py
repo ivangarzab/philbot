@@ -137,7 +137,7 @@ async def choose(ctx: commands.Context, argments):
     options = argments.split()
     result = random.choice(options)
     rand = random.randint(1, 3)
-    for rand == 1:
+    if rand == 1:
       await ctx.send(f"{result}, I choose you!")
     elif rand == 2:
       await ctx.send(f"I have selected {result}")
