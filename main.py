@@ -77,6 +77,10 @@ async def on_message(message):
     if 'papers' in msgFormat:
       messageToSend = f'Good papers grow themselves.'
 
+    # Command redirects
+    if 'weather' in msgFormat:
+      await weather(message)
+
     # Only send messageToSend if the string is not empty
     if messageToSend:
       print(f"Sending message: {messageToSend}")
