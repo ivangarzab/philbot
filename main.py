@@ -152,8 +152,8 @@ async def weather(ctx: commands.Context):
     print(f"Got a weather command")
     url = f"https://api.weatherbit.io/v2.5/current?city=San%20Francisco&state=CA&country=US&key={KEY_WEATHER}"
     response = requests.get(url)
-    print(response)
     data = response.json()
+    print(response)
     temperature_celsius = data['data'][0]['temp']
     temperature_fahrenheit = (temperature_celsius * 9/5) + 32
     description = data['data'][0]['weather']['description']
