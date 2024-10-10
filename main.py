@@ -146,7 +146,7 @@ async def choose(ctx: commands.Context, *, argments):
     else:
       await ctx.send(f"The winner is, {result}")
 
-@client.command
+@client.command()
 async def weather(ctx: commands.Context):
     print(f"Got a weather command")
     url = f"https://api.weatherbit.io/v2.5/current?city=San Francisco&state=CA&country=US&key={KEY_WEATHER}"
