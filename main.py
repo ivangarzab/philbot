@@ -131,5 +131,18 @@ async def flipcoin(ctx: commands.Context):
     result = random.choice(["HEADS", "TAILS"])
     await ctx.send(f"You flipped a coin and got {result}!")
 
+@client.command()
+async def choose(ctx: commands.Context, argments):
+    print(f"Got a choose command")
+    options = argments.split()
+    result = random.choice(options)
+    rand = random.randint(1, 3)
+    for rand == 1:
+      await ctx.send(f"{result}, I choose you!")
+    elif rand == 2:
+      await ctx.send(f"I have selected {result}")
+    else:
+      await ctx.send(f"The winner is, {result}")
+
 ################################ EXEC INIT ################################
 client.run(TOKEN) # Run the bot with your bot token
