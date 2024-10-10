@@ -132,7 +132,7 @@ async def flipcoin(ctx: commands.Context):
     await ctx.send(f"You flipped a coin and got {result}!")
 
 @client.command()
-async def choose(ctx: commands.Context, argments):
+async def choose(ctx: commands.Context, *, argments):
     print(f"Got a choose command")
     options = argments.split(" ")
     result = random.choice(options)
