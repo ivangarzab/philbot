@@ -161,7 +161,7 @@ async def weather(ctx: commands.Context):
     message = f"Current weather in {city}: {temperature_fahrenheit:.1f}°F ({description})"
     if is_raining:
       message += "; and it is raining!"
-    print("~~~{message}~~~")
+    print(f"~~~{message}~~~")
     await ctx.send(message)
 
 ################################ EXEC INIT ################################
