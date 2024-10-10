@@ -150,10 +150,18 @@ async def choose(ctx: commands.Context, *, argments):
 @client.command()
 async def weather(ctx: commands.Context):
     print(f"Got a weather command")
-    url = f"https://api.weatherbit.io/v2.5/current?city=San Francisco&state=CA&country=US&key={KEY_WEATHER}"
+    url = f"https://api.weatherbit.io/v2.5/current?city=San%20Francisco&state=CA&country=US&key={KEY_WEATHER}"
     response = requests.get(url)
     data = response.json()
-    print(data)
+    temperature_celsius = data['data'][0]['temp']
+    temperature_fahrenheit = (temperature_celsius * 9/5) + 32
+    description = data['data'][0]['weather']['description']
+    is_raining = "rain" in description.lower()
+    response = f"Current weather in {data['city_name']}: {temperature_fahrenheit:.1f}°F ({description})"
+    if is_raining:
+      response += "; and it is raining!"
+    print(response)
+    ctx.send(response)
 
 ################################ EXEC INIT ################################
 client.run(TOKEN) # Run the bot with your bot token
