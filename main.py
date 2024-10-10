@@ -150,11 +150,11 @@ async def choose(ctx: commands.Context, *, argments):
 @client.command()
 async def weather(ctx: commands.Context):
     print(f"Got a weather command")
-    url = f"https://api.weatherbit.io/v2.5/current?city=San%20Francisco&state=CA&country=US&key={KEY_WEATHER}"
+    url = f"https://api.weatherbit.io/v2.0/current?city=San%20Francisco&state&country=US&key={KEY_WEATHER}"
     response = requests.get(url)
     data = response.json()
     if data['error']:
-      print(f"Error: {data['error']}")
+      print(f"~~~Error: {data['error']}~~~")
     else: 
       print(response)
       temperature_celsius = data['data'][0]['temp']
