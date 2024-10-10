@@ -6,6 +6,7 @@ from discord.ext import tasks
 from datetime import datetime, timedelta
 import pytz
 import calendar
+import requests
 
 DEFAULT_CHANNEL = 1288337522027401256
 # Get the TOKEN from the environment variable
