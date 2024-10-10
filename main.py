@@ -10,6 +10,7 @@ import calendar
 DEFAULT_CHANNEL = 1288337522027401256
 # Get the TOKEN from the environment variable
 TOKEN = os.getenv("TOKEN")
+KEY_WEATHER = os.getenv("KEY_WEATHER")
 
 if not TOKEN:
     raise ValueError("TOKEN environment variable is not set.")
@@ -144,6 +145,14 @@ async def choose(ctx: commands.Context, *, argments):
       await ctx.send(f"I have selected {result}")
     else:
       await ctx.send(f"The winner is, {result}")
+
+@client.command
+async def weather(ctx: commands.Context):
+    print(f"Got a weather command")
+    url = f"https://api.weatherbit.io/v2.5/current?city=San Francisco&state=CA&country=US&key={KEY_WEATHER}"
+    response = requests.get(url)
+    data = response.json()
+    print(data)
 
 ################################ EXEC INIT ################################
 client.run(TOKEN) # Run the bot with your bot token
