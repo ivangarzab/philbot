@@ -159,7 +159,7 @@ async def weather(ctx: commands.Context):
     city = data['data'][0]['city_name']
     description = data['data'][0]['weather']['description']
     is_raining = "rain" in description.lower()
-    message = f"Current weather in {data['city_name']}: {temperature_fahrenheit:.1f}°F ({description})"
+    message = f"Current weather in {city}: {temperature_fahrenheit:.1f}°F ({description})"
     if is_raining:
       message += "; and it is raining!"
     print(message)
