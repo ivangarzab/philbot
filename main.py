@@ -152,16 +152,17 @@ async def weather(ctx: commands.Context):
     print(f"Got a weather command")
     url = f"https://api.weatherbit.io/v2.5/current?city=San%20Francisco&state=CA&country=US&key={KEY_WEATHER}"
     response = requests.get(url)
+    print(response)
     data = response.json()
     temperature_celsius = data['data'][0]['temp']
     temperature_fahrenheit = (temperature_celsius * 9/5) + 32
     description = data['data'][0]['weather']['description']
     is_raining = "rain" in description.lower()
-    response = f"Current weather in {data['city_name']}: {temperature_fahrenheit:.1f}°F ({description})"
+    message = f"Current weather in {data['city_name']}: {temperature_fahrenheit:.1f}°F ({description})"
     if is_raining:
-      response += "; and it is raining!"
-    print(response)
-    ctx.send(response)
+      message += "; and it is raining!"
+    print(message)
+    ctx.send(message)
 
 ################################ EXEC INIT ################################
 client.run(TOKEN) # Run the bot with your bot token
