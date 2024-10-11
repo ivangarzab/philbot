@@ -79,7 +79,7 @@ async def on_message(message):
 
     # Command redirects
     if 'weather' in msgFormat:
-      await client.process_commands("!{message}")
+      messageToSend = get_weather()
 
     # Only send messageToSend if the string is not empty
     if messageToSend:
@@ -96,6 +96,20 @@ async def on_member_join(member):
     if not channel:
         return
     await channel.send(f"Welcome to PHIL 715, {member}!")
+
+async def get_weather():
+    url = f"https://api.weatherbit.io/v2.0/current?city=San%20Francisco&state&country=US&key={KEY_WEATHER}"
+    response = requests.get(url)
+    data = response.json()
+    temperature_celsius = data['data'][0]['temp']
+    temperature_fahrenheit = (temperature_celsius * 9/5) + 32
+    city = data['data'][0]['city_name']
+    description = data['data'][0]['weather']['description']
+    is_raining = "rain" in description.lower()
+    message = f"Current weather in {city}: {temperature_fahrenheit:.1f}°F ({description})"
+    if is_raining:
+      message += "; and it is raining!"
+    return message
 
 ############################# REMINDER MESSAGES #############################
 # Define the async task running every hour that will send reminder messages
@@ -154,19 +168,9 @@ async def choose(ctx: commands.Context, *, argments):
 @client.command()
 async def weather(ctx: commands.Context):
     print(f"Got a weather command")
-    url = f"https://api.weatherbit.io/v2.0/current?city=San%20Francisco&state&country=US&key={KEY_WEATHER}"
-    response = requests.get(url)
-    data = response.json()
-    temperature_celsius = data['data'][0]['temp']
-    temperature_fahrenheit = (temperature_celsius * 9/5) + 32
-    city = data['data'][0]['city_name']
-    description = data['data'][0]['weather']['description']
-    is_raining = "rain" in description.lower()
-    message = f"Current weather in {city}: {temperature_fahrenheit:.1f}°F ({description})"
-    if is_raining:
-      message += "; and it is raining!"
-    print(f"~~~{message}~~~")
-    await ctx.send(message)
+    weather = get_weather()
+    print(f"~~~{weather}~~~")
+    await ctx.send(weather)
 
 ################################ EXEC INIT ################################
 client.run(TOKEN) # Run the bot with your bot token
