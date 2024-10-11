@@ -97,7 +97,7 @@ async def on_member_join(member):
         return
     await channel.send(f"Welcome to PHIL 715, {member}!")
 
-async def get_weather():
+def get_weather():
     url = f"https://api.weatherbit.io/v2.0/current?city=San%20Francisco&state&country=US&key={KEY_WEATHER}"
     response = requests.get(url)
     data = response.json()
