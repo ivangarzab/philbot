@@ -80,7 +80,7 @@ async def on_message(message):
     # Command redirects
     if 'weather' in msgFormat:
       ctx = await client.get_context(message)
-      client.dispatch("message", ctx.message)
+      client.dispatch("weather", ctx)
       # await client.process_commands('weather')
 
     # Only send messageToSend if the string is not empty
