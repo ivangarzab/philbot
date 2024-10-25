@@ -7,11 +7,13 @@ from datetime import datetime, timedelta
 import pytz
 import calendar
 import requests
+import openai
 
 DEFAULT_CHANNEL = 1288337522027401256
 # Get the TOKEN from the environment variable
 TOKEN = os.getenv("TOKEN")
 KEY_WEATHER = os.getenv("KEY_WEATHER")
+KEY_OPENAI = os.getenv("KEY_OPEN_AI")
 
 if not TOKEN:
     raise ValueError("TOKEN environment variable is not set.")
@@ -80,6 +82,10 @@ async def on_message(message):
     # Command redirects
     if 'weather' in msgFormat:
       messageToSend = get_weather()
+
+    if 'question:' in msgFormat:
+      prompt = msgFormat.split(':')[1]
+      messageToSend = get_openai_response(prompt)
 
     # Only send messageToSend if the string is not empty
     if messageToSend:
@@ -171,6 +177,18 @@ async def weather(ctx: commands.Context):
     weather = get_weather()
     print(f"~~~{weather}~~~")
     await ctx.send(weather)
+
+################################# OPENAI ##################################
+def get_openai_response(prompt):
+    openai.api_key = KEY_OPENAI
+    response = openai.Completion.create(
+      engine="gpt-3.5-turbo-0125",
+      prompt=prompt,
+      max_tokens=150  # Limits the length of the generated response
+    )
+    return response.choices[0].text
+
+
 
 ################################ EXEC INIT ################################
 client.run(TOKEN) # Run the bot with your bot token
